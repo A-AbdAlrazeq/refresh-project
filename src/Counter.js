@@ -1,12 +1,47 @@
 import React, { useState } from "react";
 const Counter = () => {
   const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+  const maxLimit = 100;
+  const minLimit = 0;
+  const handleIncrement = () => {
+    if (count + step <= maxLimit) {
+      setCount(count + step);
+    } else {
+      alert("The Counter can't be greater than 100");
+    }
+  };
+  const handleDecrement = () => {
+    if (count - step >= minLimit) {
+      setCount(count - step);
+    } else {
+      alert("The Counter Can't be less than 0");
+    }
+  };
+  const handleReset = () => {
+    setCount(0);
+  };
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Counter:{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      <button onClick={() => setCount(0)}>Reset</button>
+      {/* Input to set step value */}
+      <label>
+        Step:{" "}
+        <input
+          type="number"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+          min="1"
+          max="100"
+        />
+      </label>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleReset}>Reset</button>
+      <div style={{ textAlign: "center", marginTop: "10px" }}>
+        <p>Min Limit: {minLimit}</p>
+        <p>Max Limit: {maxLimit}</p>
+      </div>
     </div>
   );
   /* incorrect: onClick={setCount(count + 1)}
