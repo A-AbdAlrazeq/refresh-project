@@ -35,8 +35,12 @@ const Counter = () => {
           max="100"
         />
       </label>
-      <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
+      <button onClick={handleIncrement} disabled={count + step > maxLimit}>
+        Increment
+      </button>
+      <button onClick={handleDecrement} disabled={count - step < minLimit}>
+        Decrement
+      </button>
       <button onClick={handleReset}>Reset</button>
       <div style={{ textAlign: "center", marginTop: "10px" }}>
         <p>Min Limit: {minLimit}</p>
