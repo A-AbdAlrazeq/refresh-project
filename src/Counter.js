@@ -7,15 +7,11 @@ const Counter = () => {
   const handleIncrement = () => {
     if (count + step <= maxLimit) {
       setCount(count + step);
-    } else {
-      alert("The Counter can't be greater than 100");
     }
   };
   const handleDecrement = () => {
     if (count - step >= minLimit) {
       setCount(count - step);
-    } else {
-      alert("The Counter Can't be less than 0");
     }
   };
   const handleReset = () => {
@@ -48,11 +44,5 @@ const Counter = () => {
       </div>
     </div>
   );
-  /* incorrect: onClick={setCount(count + 1)}
-This immediately calls setCount(count + 1) during rendering, which is not correct.
-
-Correct: onClick={() => setCount(count + 1)}
-This uses an arrow function to delay execution until the button is clicked.
-*/
 };
 export default Counter;
